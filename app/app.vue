@@ -3,18 +3,13 @@ import { ref, onMounted } from "vue"
 
 const telefono = "5585833421"
 
-// ⏰ reloj + clima
+// ⏰ solo reloj
 const reloj = ref("")
-const clima = ref("Cargando clima...")
 
 onMounted(() => {
   setInterval(() => {
     reloj.value = new Date().toLocaleTimeString()
   }, 1000)
-
-  fetch("https://wttr.in/Mexico_City?format=%t+%C")
-    .then(r => r.text())
-    .then(d => clima.value = d)
 })
 
 // 🛒 carrito
@@ -177,7 +172,7 @@ const pedirTodo = () => {
     <h1 class="titulo">🌌 Pizzería Elmos 🌌</h1>
 
     <!-- RELOJ -->
-    <div class="reloj">{{ reloj }} | 🌤 {{ clima }}</div>
+    <div class="reloj">{{ reloj }}   {{ clima }}</div>
 
     <!-- ESLOGAN -->
     <div class="eslogan">“Sabor del universo en cada rebanada 🍕✨”</div>
